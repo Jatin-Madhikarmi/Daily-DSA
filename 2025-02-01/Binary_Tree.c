@@ -30,9 +30,13 @@ int main()
     */ 
     Node *traversalRoot=root;
     traversalRoot=insertLeft(traversalRoot->left,4);
+    traversalRoot=root;
     traversalRoot=insertLeft(traversalRoot->left,6);
+    traversalRoot=root;
     traversalRoot=insertRight(traversalRoot->right,9);
+    traversalRoot=root;
     traversalRoot=insertRight(traversalRoot->right,20);
+    traversalRoot=root;
     printf("Pre-Order Traversal: ");
     preOrderTraversal(root);
     printf("\n");
