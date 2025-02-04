@@ -32,3 +32,5 @@ Here we can add element to the either left handside or the right handside of the
 "If the value is lesser than the root node then add to the lefthand side else to right hand side "
 "
 Here since is lesser than both 5 and 15 so it gets added to the left handside w.r.to the 5 and  5 which are now considered to be the root node. 
+
+Here we have used the traversalRoot pointer for the implementation of the Binary Tree but everytime we add a node to the tree its value gets corrupted so after a node has been added it has to be again initialized to the root which is not a good sign if we have 1000 nodes to be added to the tree then for a thousand times we have to i initialize to root which is not good.Yes we can create  function for it but it would it quite bad.
