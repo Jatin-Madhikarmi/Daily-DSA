@@ -17,7 +17,7 @@ typedef struct BST
 void createList(List **,List **,int);
 BST *insert(BST *,int);
 BST *newNode(int);
-void Inorder(BST *);
+void Inorder(BST *,List**,List **);
 void Delete(List *);
 void postorderDeletion(BST *);
 int main()
@@ -40,7 +40,7 @@ int main()
     {
         createList(&head2,&tail2,brr[i]);
     }
-
+    
     tail1->link=head2;
     struct List *trav=head1;
 
@@ -50,8 +50,18 @@ int main()
         root=insert(root,head1->data);
         head1=head1->link;
     }
+
+    List *head=NULL,*tail=NULL;
+
     printf("\nThe sorted List is :\n");
-    Inorder(root);
+    Inorder(root,&head,&tail);
+    List *temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d -> ",temp->data);
+        temp=temp->link;
+    }
+    Delete(head);
     Delete(trav);
     Delete(head2);
     postorderDeletion(root);
@@ -99,13 +109,13 @@ BST *newNode(int data)
     return root;
 }
 
-void Inorder(BST *root)
+void Inorder(BST *root,List **head,List **tail)
 {
     if(root==NULL)
     return;
-    Inorder(root->left);
-    printf("%d ",root->data);
-    Inorder(root->right);
+    Inorder(root->left,head,tail);
+    createList(head,tail,root->data);
+    Inorder(root->right,head,tail);
 }
 
 void Delete(List *head)
