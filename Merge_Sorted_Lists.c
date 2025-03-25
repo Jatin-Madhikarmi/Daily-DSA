@@ -18,6 +18,8 @@ void createList(List **,List **,int);
 BST *insert(BST *,int);
 BST *newNode(int);
 void Inorder(BST *);
+void Delete(List *);
+void postorderDeletion(BST *);
 int main()
 {
     printf("Program to Merge two Sorted Linked Lists.\n");
@@ -40,6 +42,7 @@ int main()
     }
 
     tail1->link=head2;
+    struct List *trav=head1;
 
     BST *root=NULL;
     while(head1!=NULL)
@@ -47,8 +50,11 @@ int main()
         root=insert(root,head1->data);
         head1=head1->link;
     }
-    printf("The sorted List is :\n");
+    printf("\nThe sorted List is :\n");
     Inorder(root);
+    Delete(trav);
+    Delete(head2);
+    postorderDeletion(root);
     return 0;
 }
 
@@ -97,8 +103,25 @@ void Inorder(BST *root)
 {
     if(root==NULL)
     return;
-
     Inorder(root->left);
     printf("%d ",root->data);
     Inorder(root->right);
+}
+
+void Delete(List *head)
+{
+    while(head!=NULL)
+    {
+        List *temp=head;
+        head=head->link;
+        free(temp);
+    }
+}
+void postorderDeletion(BST *root)
+{
+    if(root=NULL)
+    return;
+    postorderDeletion(root->left);
+    postorderDeletion(root->right);
+    free(root);
 }
