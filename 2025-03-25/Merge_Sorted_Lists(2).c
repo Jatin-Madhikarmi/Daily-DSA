@@ -14,8 +14,8 @@ void deleteList(List *);
 int main()
 {
     printf("Program to sort the array through the sorting methods.\n");
-    int arr[]={1,2,3,5,7};
-    int brr[]={2,4,6,8,9};
+    int arr[]={1,5,8,7,9};
+    int brr[]={2,4,5,6,7};
     int n1=sizeof(arr)/sizeof(arr[0]);
     int n2=sizeof(brr)/sizeof(brr[0]);
 
@@ -55,8 +55,8 @@ int main()
     }
     printf("NULL\n");
 
-    Sort(&head1,&tail1,&head2,n1,n2);
     printf("The sorted final list is:\n");
+    Sort(&head1,&tail1,&head2,n1,n2);
     while(head1!=NULL)
     {
         printf("%d -> ",head1->data);
@@ -86,23 +86,23 @@ void createList(List ** head,List **tail,int data)
 
 void Sort(List **head1,List **tail1,List **head2,int n1,int n2)
 {
-    List *L2=*head2;
     List *curr=*head1;
     List *traversal=*head2;
-    for(int i=0;i<n1;i++)
+    for(int i=0;i<n1+n2;i++)
     {
-        L2=traversal;
-        for(int j=0;j<n2;j++)
+        traversal=curr !=NULL ? curr->next : NULL ;
+        for(int j=i+1;j<n2+n1;j++)
         {
+            if(curr==NULL || traversal==NULL) break;
             if(curr->data > traversal->data )
             {
                 int temp=curr->data;
                 curr->data=traversal->data;
                 traversal->data=temp;
             }
+            traversal=traversal->next;
         }
         curr=curr->next;
-        L2=L2->next;
     }
 }
 
