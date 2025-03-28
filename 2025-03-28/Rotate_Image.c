@@ -18,8 +18,8 @@ int main()
     }
     printf("The matrix before the rotation is:\n");
     printMatrix(rows,columns,arr);
-    printf("The matrix after rotation is:\n");
     Rotate(rows,columns,arr);
+    printf("The matrix after rotation is:\n"); 
     printMatrix(rows,columns,arr);
 }
 
@@ -38,11 +38,17 @@ void printMatrix(int rows, int columns, int arr[rows][columns])
 
 void Rotate(int rows, int columns, int arr[rows][columns])
 {
+    int temp=0;
+    int nRows=2;
+    int nCols=0;
     for(int i=0;i<rows;i++)
     {
-        for(int j=0;j<columns;j++)
+        for(int j=i;j<columns;j++)
         {
+            temp=arr[i][j];
             arr[i][j]=arr[j][i];
+            arr[j][i]=temp;
         }
     }
+
 }
