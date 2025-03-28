@@ -39,13 +39,11 @@ void printMatrix(int rows, int columns, int arr[rows][columns])
 void Rotate(int rows, int columns, int arr[rows][columns])
 {
     int temp=0;
-    int nRows=2;
+    int nRows=(rows-1);
     int Rows=nRows;
-    int nCols=0;
-    int Cols=nCols;
     for(int i=0;i<rows;i++)
     {
-        for(int j=0;j<columns/2;j++)
+        for(int j=i;j<columns;j++)
         {
             temp=arr[i][j];
             arr[i][j]=arr[j][i];
@@ -58,7 +56,7 @@ void Rotate(int rows, int columns, int arr[rows][columns])
     for(int i=0;i<rows;i++)
     {
         nRows=Rows;
-        for(int j=0;j<columns/2;j++)//columns/2 becuse it keeps resetting.
+        for(int j=0;j<columns/2;j++)
         {
             int temp=arr[i][j];
             printf("The value of a[%d][%d] before swapping is %d.\n",i,j,arr[i][j]);
