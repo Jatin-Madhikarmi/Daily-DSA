@@ -40,15 +40,34 @@ void Rotate(int rows, int columns, int arr[rows][columns])
 {
     int temp=0;
     int nRows=2;
+    int Rows=nRows;
     int nCols=0;
+    int Cols=nCols;
     for(int i=0;i<rows;i++)
     {
-        for(int j=i;j<columns;j++)
+        for(int j=0;j<columns/2;j++)
         {
             temp=arr[i][j];
             arr[i][j]=arr[j][i];
             arr[j][i]=temp;
         }
+    }
+    printf("Transpose is:\n");
+    printMatrix(rows,columns,arr);
+    
+    for(int i=0;i<rows;i++)
+    {
+        nRows=Rows;
+        for(int j=0;j<columns/2;j++)//columns/2 becuse it keeps resetting.
+        {
+            int temp=arr[i][j];
+            printf("The value of a[%d][%d] before swapping is %d.\n",i,j,arr[i][j]);
+            arr[i][j]=arr[i][nRows];
+            printf("The value of a[%d][%d] after swapping is %d.\n",i,j,arr[i][nRows]);
+            arr[i][nRows]=temp;
+            nRows--;
+        }
+
     }
 
 }
