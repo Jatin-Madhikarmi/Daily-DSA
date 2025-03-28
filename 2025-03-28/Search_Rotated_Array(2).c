@@ -10,7 +10,7 @@ int main()
     int result=Search(arr,n,target);
     if(result==1) printf("The target %d is present in the given data set.\n",target);
     else printf("The target %d is not found in the given data set.\n",target);
-
+    return 0;
 }
 
 int Search(int arr[], int n, int target)
