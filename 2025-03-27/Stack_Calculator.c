@@ -75,6 +75,7 @@ int pop(stack **top)
     int val=(*top)->val;
     stack *temp=*top;
     (*top)=(*top)->next;
+    printf("\nValue freed is %d.\n",val);
     free(temp);
     return val;
 }
