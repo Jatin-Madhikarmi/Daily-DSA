@@ -14,14 +14,14 @@ char *pop(stack **top);
 int main()
 {
     printf("Program to conevert an expression into reverse polish notation.\n");
-    char *tokens[]={"1","+","2"};
+    char *tokens[]={"1","+","2","*","3"};
     printf("The original notation is:\n");
     int size=sizeof(tokens)/sizeof(tokens[0]);
     for(int i=0;i<size;i++)
     printf("%s ",tokens[i]);
 
-    printf("\nIt's equivalent reverse polish notation is\n");
     stack *top=NULL;
+    printf("\nIt's equivalent reverse polish notation is\n");
     reversePolish(tokens,size,top);
     return 0;
 }
